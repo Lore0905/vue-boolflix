@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <main>
         ciao
-    </div>
+    </main>
 </template>
 
 <script>
@@ -11,5 +11,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+main{
+    height: calc(100vh - 100px);
+    border: 1px solid black;
+}
 
 </style>
