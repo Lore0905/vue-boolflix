@@ -13,18 +13,28 @@
     // creo il button 
     // creo una variabile, nella quale salvo il dato scritto dall'utente, usando il v-model
     // lo passo all'App.vue CON l'emit 
-    
+
     // guardare appunti App.vue
 // ------------------------------------------------------------------
 <template>
     <header>
-        ciao
+        <div>
+            <input type="text" v-model="userInput">
+        </div>
+        <div>
+            <button @click="$emit ('valueUserInput', userInput) ">serch</button>
+        </div>
     </header>
 </template>
 
 <script>
 export default {
-    name: 'Header'
+    name: 'Header',
+    data: function(){
+        return {
+            userInput: ""
+        }
+    }
 }
 </script>
 
@@ -33,6 +43,9 @@ header{
     border: 1px solid black;
     height: 100px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 </style>

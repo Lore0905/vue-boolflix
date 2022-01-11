@@ -6,7 +6,7 @@
 <template>
   <div id="app">
     <header>
-      <Header/>
+      <Header @valueUserInput="printUserInput"/>
     </header>
     <main>
       <Main/>
@@ -24,6 +24,16 @@ export default {
   components: {
     Header,
     Main
+  },
+  data: function (){
+    return {
+      userInput: "",
+    }
+  },
+  methods:  {
+    printUserInput: function(userInput){
+      return this.userInput = userInput;
+    }
   }
 }
 </script>
