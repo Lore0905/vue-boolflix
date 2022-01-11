@@ -6,10 +6,10 @@
 <template>
   <div id="app">
     <header>
-      <Header @valueUserInput="apiCall"/>
+      <Header @valueUserInput="apiCall" />
     </header>
     <main>
-      <Main/>
+      <Main :totalFilmsReserch="filmDetails"/>
     </main>
   </div>
 </template>
