@@ -6,7 +6,7 @@
 <template>
   <div id="app">
     <header>
-      <Header @valueUserInput="printUserInput"/>
+      <Header @valueUserInput="apiCall"/>
     </header>
     <main>
       <Main/>
@@ -27,24 +27,22 @@ export default {
   },
   data: function (){
     return {
-      userInput: "",
       filmDetails: []
     }
   },
   methods:  {
-    printUserInput: function(userInput){
-      return this.userInput = userInput;
-    },
-    apiCall: () => {
+
+    apiCall: function(userInput){
       axios.get('https://api.themoviedb.org/3/search/movie',
       {
         params: {
           api_key: 'db9a08f20bbc721f9eb91b4003906b6b',
-          query: this.userInput
+          query: userInput
         }
       })
       .then((response) => {
-        this.filmDetails.push(response)
+        this.filmDetails = response.data.results
+        console.log(this.filmDetails)
       });
     }
   }
