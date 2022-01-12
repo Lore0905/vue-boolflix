@@ -42,7 +42,7 @@ export default {
       {
         params: {
           api_key: this.apiKey,
-          query: this.userInput
+          query: this.userInputFilm
         }
       })
       .then((response) => {
