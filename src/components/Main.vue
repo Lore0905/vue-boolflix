@@ -45,7 +45,8 @@
                         <h5>VOTO</h5>
                     </li>
                     <li>
-                        {{film.vote_average}}
+                        {{star(film.vote_average)}}
+                        <i class="fas fa-star" v-for=" n in numberOfStars " :key="n"></i>
                     </li>
                 </ul>
             </div>
@@ -93,8 +94,9 @@
                     <li>
                         <h5>VOTO</h5>
                     </li>
-                    <li>
-                        {{serie.vote_average}}
+                    <li >
+                        {{star(serie.vote_average)}}
+                        <i class="fas fa-star" v-for=" n in numberOfStars " :key="n"></i>
                     </li>
                 </ul>
             </div>
@@ -109,8 +111,23 @@ export default {
     props: {
     totalFilmsReserch: Array,
     totalSerieReserch: Array
-  }
- }
+  },
+  data: function(){
+      return{
+        numberOfStars: 0,
+    }
+  },
+  methods: {
+    //   creo una funzione che mi permetta di stampare a schermo le stelle in base al voto
+    //  il voto lo passo alla funzione come argomento 
+        star: function(voto) {
+        const roundedVote = Math.ceil(voto / 2) ;
+        this.numberOfStars = roundedVote 
+        
+        return this.numberOfStars
+        }
+    }
+}
 </script>
 
 <style scoped lang="scss">
@@ -128,6 +145,7 @@ main{
                 height: 100%;
                 position: absolute;
                 object-fit: cover;
+                display: none;
                 } 
             } 
             ul{
