@@ -27,17 +27,22 @@ export default {
   },
   data: function (){
     return {
-      filmDetails: []
+      filmDetails: [],
+      apiKey: 'db9a08f20bbc721f9eb91b4003906b6b',
+      userInputFilm: "",
     }
   },
   methods:  {
-
-    apiCall: function(userInput){
+    apiCall: function (userInput){
+      this.userInputFilm = userInput
+      this.apiCallMovies()
+    },
+    apiCallMovies: function(){
       axios.get('https://api.themoviedb.org/3/search/movie',
       {
         params: {
-          api_key: 'db9a08f20bbc721f9eb91b4003906b6b',
-          query: userInput
+          api_key: this.apiKey,
+          query: this.userInput
         }
       })
       .then((response) => {
