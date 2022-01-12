@@ -145,7 +145,6 @@ main{
                 height: 100%;
                 position: absolute;
                 object-fit: cover;
-                display: none;
                 } 
             } 
             ul{
