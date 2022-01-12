@@ -15,9 +15,9 @@
       <Header @valueUserInput="apiCall" />
     </header>
     <main>
-      <Main :totalFilmsReserch="filmDetails"/>
+      <Main :totalFilmsReserch="filmDetails" :totalSerieReserch="serieDetails"/>
     </main>
-  </div>
+  </div> 
 </template>
 
 <script>
@@ -34,26 +34,41 @@ export default {
   data: function (){
     return {
       filmDetails: [],
+      serieDetails: [],
       apiKey: 'db9a08f20bbc721f9eb91b4003906b6b',
-      userInputFilm: "",
+      userInput: "",
     }
   },
   methods:  {
     apiCall: function (userInput){
-      this.userInputFilm = userInput
+      this.userInput = userInput
       this.apiCallMovies()
+      this.apiCallSerie()
     },
     apiCallMovies: function(){
       axios.get('https://api.themoviedb.org/3/search/movie',
       {
         params: {
           api_key: this.apiKey,
-          query: this.userInputFilm
+          query: this.userInput
         }
       })
       .then((response) => {
         this.filmDetails = response.data.results
         console.log(this.filmDetails)
+      });
+    },
+    apiCallSerie: function(){
+      axios.get('https://api.themoviedb.org/3/search/tv',
+      {
+        params: {
+          api_key: this.apiKey,
+          query: this.userInput
+        }
+      })
+      .then((response) => {
+        this.serieDetails = response.data.results
+        console.log(this.serieDetails)
       });
     }
   }

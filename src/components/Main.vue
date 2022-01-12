@@ -1,36 +1,47 @@
 // MILESTONE 2 
-// creare un if sulla li lingua
-    // se element.original_language === 'it'  || element.original_language === 'en'
-    // stampa ../../src/assets/' + element.original_language + '.png'
-    // altriemnti element.original_language
+// creo la funzione apiCallSeries
+// faccio la chiamata HTTP --> usando axios 
+// uso i seguenti parameti obbligatori:
+// api_key
+// query
+// creo l' arrey serieDetails nei data 
+// nella funzione .then() --> scrivo che serieDetails deve essere uguale a response.data.results
+// con una props lo passo al componente main
+// inserisco i rispettivi dati
 <template>
     <main>
+        <!-- MOVIES -->
+        <div>
+            <h2>Questi sono i film</h2>
+        </div>
+
         <!-- TITLE -->
-        <div v-for="(element, index) in totalFilmsReserch" :key="index" class="square">
+        <div v-for="(film, index) in totalFilmsReserch" :key="index" class="square film">
+            
             <ul>
                 <li>
                     <h5>TITLE</h5>
                 </li>
                 <li >
-                    {{element.title}}
+                    {{film.title}}
                 </li>
             <!-- TITOLO ORIGINALE -->
                 <li>
                     <h5>TITOLO ORIGINALE</h5>
                 </li>
                 <li >
-                    {{element.original_title}}
+                    {{film.original_title}}
                 </li>
             <!-- LINGUA -->
                 <li>
                     <h5>LINGUA</h5>
                 </li>
                 <li >
-                    <div v-if="element.original_language === 'it'  || element.original_language === 'en'" >
-                        <img :src= "require( '../../src/assets/' + element.original_language + '.png')" >
+                    <div v-if="film.original_language === 'it'  || film.original_language === 'en'" >
+                        <img :src= "require( '../../src/assets/' + film.original_language + '.png')" >
                     </div>
                     <div v-else>
-                        {{element.original_language}}
+                        {{film.original_language}}
                     </div>
                 </li>
             <!-- VOTO -->
@@ -38,7 +49,50 @@
                     <h5>VOTO</h5>
                 </li>
                 <li>
-                    {{element.vote_average}}
+                    {{film.vote_average}}
+                </li>
+            </ul>
+        </div>
+
+        <!-- MOVIES -->
+        <div>
+            <h2>Questi sono le serie tv</h2>
+        </div>
+        
+        <!-- TITLE -->
+        <div v-for="(serie, index) in totalSerieReserch" :key="index" class="square serie">
+            <ul>
+                <li>
+                    <h5>TITLE</h5>
+                </li>
+                <li >
+                    {{serie.name}}
+                </li>
+            <!-- TITOLO ORIGINALE -->
+                <li>
+                    <h5>TITOLO ORIGINALE</h5>
+                </li>
+                <li >
+                    {{serie.original_name}}
+                </li>
+            <!-- LINGUA -->
+                <li>
+                    <h5>LINGUA</h5>
+                </li>
+                <li >
+                    <div v-if="serie.original_language === 'it'  || serie.original_language === 'en'" >
+                        <img :src= "require( '../../src/assets/' + serie.original_language + '.png')" >
+                    </div>
+                    <div v-else>
+                        {{serie.original_language}}
+                    </div>
+                </li>
+            <!-- VOTO -->
+                <li>
+                    <h5>VOTO</h5>
+                </li>
+                <li>
+                    {{serie.vote_average}}
                 </li>
             </ul>
         </div>
@@ -50,7 +104,8 @@
 export default {
     name: "Main",
     props: {
-    totalFilmsReserch: Array
+    totalFilmsReserch: Array,
+    totalSerieReserch: Array
   }
  }
 </script>
@@ -81,8 +136,13 @@ main{
                         width: 20px;
                     }
                 }
-        }
+            }
        }
 }
-
+.film{
+    background-color: chocolate;
+}
+.serie{
+    background-color: cornflowerblue;
+}
 </style>
