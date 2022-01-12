@@ -1,3 +1,8 @@
+// MILESTONE 2 
+// creare un if sulla li lingua
+    // se element.original_language === 'it'  || element.original_language === 'en'
+    // stampa ../../src/assets/' + element.original_language + '.png'
+    // altriemnti element.original_language
 <template>
     <main>
         <!-- TITLE -->
@@ -21,7 +26,12 @@
                     <h5>LINGUA</h5>
                 </li>
                 <li >
-                    {{element.original_language}}
+                    <div v-if="element.original_language === 'it'  || element.original_language === 'en'" >
+                        <img :src= "require( '../../src/assets/' + element.original_language + '.png')" >
+                    </div>
+                    <div v-else>
+                        {{element.original_language}}
+                    </div>
                 </li>
             <!-- VOTO -->
                 <li>
@@ -66,6 +76,9 @@ main{
                     list-style-type: none;
                     h5{
                         margin: 3px 0;
+                    }
+                    img{
+                        width: 20px;
                     }
                 }
         }
