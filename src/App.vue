@@ -73,6 +73,12 @@ body{
   font-family: 'Roboto', sans-serif;
   background-color: #141414;
   color: white;
-  
+}
+::-webkit-scrollbar{
+  background-color:#141414;
+}
+::-webkit-scrollbar-thumb{
+  background-color: white;
+  border-radius: 10px;
 }
 </style>

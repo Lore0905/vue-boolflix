@@ -36,7 +36,7 @@ header{
     padding: 0 5%;
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 100;
     #title{
         flex-grow: 1;
         color: #E50914;

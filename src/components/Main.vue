@@ -136,13 +136,12 @@ main{
     margin-top: 100px;
        .square{
            width: 342px;
-           min-height: 600px;
+           min-height: 550px;
            margin: 20px 5px;
            position: relative;
            flex-shrink: 0;
-           
-           
-           
+
+
            .background-path{ 
                 img{
                 width: 100%;
@@ -153,13 +152,15 @@ main{
             } 
             ul{
                 margin: 0;
-                padding: 20px 10px;
+                padding: 10% 20px;
                 
                 li{
                     
                     h5{
                         margin: 3px 0;
                         padding: 5px 0px;
+                        font-size: 15px;
+                        color: #E50914;
                     }
                     .flag{
                         img {
@@ -191,7 +192,7 @@ h2{
 
 // HOVER
 .square:hover{
-    transform: scale(1.03);
+    transform: scale(1.04);
     z-index: 10;
 }
 .square:hover .background-path{
