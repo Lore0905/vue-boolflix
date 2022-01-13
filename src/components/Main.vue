@@ -133,7 +133,7 @@ export default {
 
 <style scoped lang="scss">
 main{
-    // height: calc(100vh - 100px);
+    margin-top: 100px;
        .square{
            width: 342px;
            min-height: 600px;
