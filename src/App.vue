@@ -80,5 +80,9 @@ body{
 ::-webkit-scrollbar-thumb{
   background-color: white;
   border-radius: 10px;
+  display: none;
+}
+body:hover ::-webkit-scrollbar-thumb{
+  display: block;
 }
 </style>
