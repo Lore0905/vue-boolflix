@@ -33,7 +33,7 @@
                         <h5>LINGUA</h5>
                     </li>
                     <li >
-                        <div v-if="film.original_language === 'it'  || film.original_language === 'en'" class="flag">
+                        <div v-if="flagsAvailable.includes(film.original_language)" class="flag">
                             <img :src= "require( '../../src/assets/' + film.original_language + '.png')" >
                         </div>
                         <div v-else>
@@ -83,7 +83,7 @@
                         <h5>LINGUA</h5>
                     </li>
                     <li >
-                        <div v-if="serie.original_language === 'it'  || serie.original_language === 'en'" class="flag">
+                        <div v-if="flagsAvailable.includes(serie.original_language)" class="flag">
                             <img :src= "require( '../../src/assets/' + serie.original_language + '.png')" >
                         </div>
                         <div v-else>
@@ -113,9 +113,10 @@ export default {
     totalSerieReserch: Array
   },
   data: function(){
-      return{
+    return{
         numberOfStars: 0,
-    }
+        flagsAvailable: ['it', 'en']
+    }   
   },
   methods: {
     //   creo una funzione che mi permetta di stampare a schermo le stelle in base al voto
@@ -134,10 +135,13 @@ export default {
 main{
     // height: calc(100vh - 100px);
        .square{
-           width: 350px;
-           min-height: 500px;
-           margin: 20px;
+           width: 342px;
+           min-height: 600px;
+           margin: 20px 5px;
            position: relative;
+           flex-shrink: 0;
+           
+           
            
            .background-path{ 
                 img{
@@ -171,18 +175,27 @@ main{
 // wrapping
 .serie-wrapping, .film-wrapping{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    overflow-x: auto;
+    margin: 0 20px;
+    scrollbar-color: #141414;
 }
 // single details
-.film{
-    background-color: chocolate;
+.film, .serie{
+    background-color: rgba($color: #000000, $alpha: 0.3);
 }
-.serie{
-    background-color: cornflowerblue;
-}
+// title
 h2{
-    text-align: center;
+    text-align: left;
+    margin: 10px 30px;
+}
+
+// HOVER
+.square:hover{
+    transform: scale(1.03);
+    z-index: 10;
+}
+.square:hover .background-path{
+    display: none;
 }
      
 </style>
