@@ -1,9 +1,9 @@
-// MILESTONE 3
+
 
 <template>
     <main>
         <!-- MOVIES -->
-        <div>
+        <div v-if="totalFilmsReserch.length > 0">
             <h2>Questi sono i film</h2>
         </div>
         <div class="container">
@@ -12,14 +12,17 @@
 
         
 
-        <!-- MOVIES -->
-        <div>
+        <!-- SERIE -->
+        <div v-if="totalSerieReserch.length > 0">
             <h2>Questi sono le serie tv</h2>
         </div>
         <div class="container">
             <Media v-for="serie in totalSerieReserch" :key="serie.id" :details="serie"/>
         </div>
         
+        <div v-if="totalSerieReserch.length === 0" class="alert">
+            cerca il film che vuoi vedere
+        </div>
         
         
     </main>
@@ -48,5 +51,9 @@ main{
         text-align: left;
         margin: 2% 2%;
     }
+}
+.alert{
+    font-size: 20px;
+    padding: 50px;
 }
 </style>
