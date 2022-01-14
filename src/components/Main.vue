@@ -7,7 +7,7 @@
             <h2>Questi sono i film</h2>
         </div>
         <div class="container">
-            <Media v-for="film in totalFilmsReserch" :key="film.id" :details="film"/>
+            <Media v-for="film in totalFilmsReserch" :key="film.id" :details="film" :type="'movie'"/>
         </div>
 
         
@@ -17,7 +17,7 @@
             <h2>Questi sono le serie tv</h2>
         </div>
         <div class="container">
-            <Media v-for="serie in totalSerieReserch" :key="serie.id" :details="serie"/>
+            <Media v-for="serie in totalSerieReserch" :key="serie.id" :details="serie" :type="'tv'"/>
         </div>
         
         <div v-if="totalSerieReserch.length === 0" class="alert">
@@ -30,6 +30,7 @@
 
 <script>
 import Media from '../components/Media.vue'
+
 export default {
     name: "Main",
     components: {
@@ -38,7 +39,7 @@ export default {
     props: {
     totalFilmsReserch: Array,
     totalSerieReserch: Array
-  },
+    },
   
 }
 </script>
